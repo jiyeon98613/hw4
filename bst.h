@@ -247,7 +247,7 @@ protected:
     virtual void nodeSwap( Node<Key,Value>* n1, Node<Key,Value>* n2) ;
 
     // Add helper functions here
-    int helper_isBalanced(Node<Key, Value>* ptr);
+    int helper_isBalanced(Node<Key, Value>* ptr)const;
     static Node<Key, Value>* successor(Node<Key, Value>* current);
 
 
@@ -711,11 +711,11 @@ bool BinarySearchTree<Key, Value>::isBalanced() const
 }
 
 template<typename Key, typename Value>
-int BinarySearchTree<Key, Value>::helper_isBalanced(Node<Key, Value>* ptr)
+int BinarySearchTree<Key, Value>::helper_isBalanced(Node<Key, Value>* ptr) const
 {
     if(empty()){return 0;}
     //if we hit the leaf node
-    if(!ptr->getLeft() && !ptr->getRight())
+    if(!(ptr->getLeft()) && !(ptr->getRight()))
     {
         return 0;
     }
